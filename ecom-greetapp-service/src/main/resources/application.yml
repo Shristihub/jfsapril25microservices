@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: greet-service
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://eureka-server
