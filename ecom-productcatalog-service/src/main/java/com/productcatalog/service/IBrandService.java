@@ -1,7 +1,7 @@
 package com.productcatalog.service;
 
-import com.productapp.exceptions.BrandNotFoundException;
-import com.productapp.model.BrandDto;
+import com.productcatalog.exceptions.BrandNotFoundException;
+import com.productcatalog.model.BrandDto;
 
 public interface IBrandService {
 	

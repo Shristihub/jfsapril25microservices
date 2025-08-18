@@ -2,8 +2,8 @@ package com.productcatalog.service;
 
 import java.util.List;
 
-import com.productapp.exceptions.ProductNotFoundException;
-import com.productapp.model.ProductDto;
+import com.productcatalog.exceptions.ProductNotFoundException;
+import com.productcatalog.model.ProductDto;
 
 public interface IProductService {
 	

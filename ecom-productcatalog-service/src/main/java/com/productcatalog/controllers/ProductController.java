@@ -82,7 +82,7 @@ public class ProductController {
 		}
 		
 //		 http://localhost:8081/product-api/v1/products/brand/Samsung
-		@GetMapping("/products/brand/{brandName}")
+		@GetMapping("/products/brand/{brand}")
 		ResponseEntity<List<ProductDto>> getByBrand(@PathVariable String brand){
 			List<ProductDto> productDtos = productService.getByBrand(brand);
 	    	HttpHeaders headers =  new HttpHeaders();

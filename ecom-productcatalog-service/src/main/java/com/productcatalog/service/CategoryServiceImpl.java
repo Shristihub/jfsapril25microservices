@@ -4,9 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.productapp.model.Category;
-import com.productapp.model.CategoryDto;
-import com.productapp.repository.ICategoryRepository;
+import com.productcatalog.model.Category;
+import com.productcatalog.model.CategoryDto;
+import com.productcatalog.repository.ICategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements ICategoryService{

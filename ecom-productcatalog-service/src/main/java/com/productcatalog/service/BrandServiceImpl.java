@@ -4,10 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.productapp.exceptions.BrandNotFoundException;
-import com.productapp.model.Brand;
-import com.productapp.model.BrandDto;
-import com.productapp.repository.IBrandRepository;
+import com.productcatalog.exceptions.BrandNotFoundException;
+import com.productcatalog.model.Brand;
+import com.productcatalog.model.BrandDto;
+import com.productcatalog.repository.IBrandRepository;
 
 @Service
 public class BrandServiceImpl implements IBrandService{

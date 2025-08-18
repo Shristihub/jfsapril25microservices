@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8084
 
 #datasource specific properties
 spring:
@@ -13,3 +13,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  application:
+    name: product-catalog
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://eureka-server

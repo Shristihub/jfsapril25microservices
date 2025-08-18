@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.productapp.exceptions.ProductNotFoundException;
-import com.productapp.model.Product;
-import com.productapp.model.ProductDto;
-import com.productapp.repository.IProductRepository;
+import com.productcatalog.exceptions.ProductNotFoundException;
+import com.productcatalog.model.Product;
+import com.productcatalog.model.ProductDto;
+import com.productcatalog.repository.IProductRepository;
 
 @Service
 public class ProductServiceImpl implements IProductService {

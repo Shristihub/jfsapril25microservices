@@ -1,6 +1,6 @@
 package com.productcatalog.service;
 
-import com.productapp.model.CategoryDto;
+import com.productcatalog.model.CategoryDto;
 
 public interface ICategoryService {
 	
