@@ -21,6 +21,8 @@ public class ProductDto {
 	private List<Category> categories;
 	private List<String> paymentModes; //COD,UPI,CREDITCARD,DEBITCARD
 	private List<String> deliveryTypes; //standard, prime,free
+	//add stock
+	int stock;
 	
 	
 }

@@ -24,8 +24,17 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public void addProduct(ProductDto productDto) {
 		// convert dto(productDto) in entity(product)
+		   
 		Product product = mapper.map(productDto, Product.class);
 		productRepository.save(product);
+		//  get the stock from the productDTO
+		
+		// get the productId after saving the product
+		
+		// frame the uri to call the inventory microservice
+		
+		//using resttemplate call the appropriate method
+		
 	}
 
 	@Override

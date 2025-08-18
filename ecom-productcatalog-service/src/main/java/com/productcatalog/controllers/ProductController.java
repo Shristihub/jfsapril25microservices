@@ -3,6 +3,7 @@ package com.productcatalog.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,15 @@ public class ProductController {
 	
 		@Autowired
 	    private IProductService productService;
+		@Value("${message}")
+		private String message;
+		
+		
+//		http://localhost:8081/product-api/v1/show-message
+		@GetMapping("/show-message")
+		String showMessage() {
+			return message.toUpperCase();
+		}
 	
 //		http://localhost:8081/product-api/v1/products
 	    @PostMapping("/products")

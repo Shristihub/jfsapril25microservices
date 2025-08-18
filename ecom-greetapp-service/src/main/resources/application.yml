@@ -1,8 +1,11 @@
 spring:
-  application:
+ application:
     name: greet-service
-
+ profiles:
+    active: dev
+    default: prod 
 eureka:
   client:
     service-url:
       default-zone: http://eureka-server
+ 
