@@ -12,13 +12,13 @@ import org.springframework.web.client.RestTemplate;
 
 import com.productinfo.model.Product;
 
-@Service
+//@Service
 public class ProductInfoServiceImplload implements IProductInfoService{
 
 	@Autowired
 	private RestTemplate template;
 	// pass the application name instead of localhost
-	private final String BASEURL = "http://product-catalog/product-api/v1/products";
+	private final String BASEURL = "http://product-catalog/catalog-service/v1/products";
 	
 	@Autowired
 	private LoadBalancerClient loadBalancerClient;

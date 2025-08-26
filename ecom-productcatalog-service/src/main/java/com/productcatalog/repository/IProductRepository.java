@@ -30,9 +30,9 @@ public interface IProductRepository extends JpaRepository<Product, Integer>{
 	List<Product> findByCategoryPrice(String category, double price);
 	
 	//use column name and table name
-	@Query(value = "update product set cost=?2 where product_id=?1",nativeQuery = true)
+	@Query(value = "update product set stock=?2 where product_id=?1",nativeQuery = true)
 	@Modifying
-	void updateProduct(int productId, double price);
+	void updateProductStock(int productId, int stock);
 	
 	
 	

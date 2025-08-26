@@ -19,7 +19,7 @@ public class InventoryServiceImpl implements IInventoryService {
 	private IInventoryRepository inventoryRepository;
 
 	@Override
-	public void addStock(InventoryRequest inventoryRequest) {
+	public String addStock(InventoryRequest inventoryRequest) {
 		// get the productId from the inventory
 		int productId = inventoryRequest.getProductId();
 		// check if it is in db
@@ -31,7 +31,7 @@ public class InventoryServiceImpl implements IInventoryService {
 		inventory.setProductId(productId);
 		// save the inventory object
 		inventoryRepository.save(inventory);
-
+		return "stock added";
 	}
 
 	@Override
@@ -47,7 +47,8 @@ public class InventoryServiceImpl implements IInventoryService {
 		int productId = inventoryRequest.getProductId();
 		// check if it is in db
 		Inventory inventory = inventoryRepository.findByProductId(productId) // return inventory if present
-				.orElseThrow(() -> new InvalidProductIdException("invalid id"));
+				//.orElseThrow(() -> new InvalidProductIdException("invalid id"));
+				.orElse(new Inventory()); // eles create a new inventory object
 		// get the productId, stock from inventoryrequest and set it
 		// if the inventory exists already, get the old staock also
 		inventory.setStock(inventoryRequest.getStock() + inventory.getStock());

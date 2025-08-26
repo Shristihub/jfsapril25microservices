@@ -15,7 +15,7 @@ public class ProductInfoServiceImpl implements IProductInfoService{
 	@Autowired
 	private RestTemplate template;
 	// pass the application name instead of localhost
-	private final String BASEURL = "http://product-catalog/product-api/v1/products";
+	private final String BASEURL = "http://product-catalog/catalog-service/v1/products";
 	
 	@Override
 	public Product getById(int productId)  {

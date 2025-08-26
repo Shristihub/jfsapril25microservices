@@ -13,34 +13,34 @@ import com.productinfo.model.Product;
 import com.productinfo.service.IProductInfoService;
 
 @RestController
-@RequestMapping("/productinfo-api/v1")
+@RequestMapping("/info-service/v1")
 public class ProductInfoController {
 	
 	@Autowired
 	private IProductInfoService productInfoService;
 
-	//http://localhost:8082/productinfo-api/v1/product-info/productid/1
+	//http://localhost:8082/info-service/v1/product-info/productid/1
 	@GetMapping("/product-info/productid/{productId}")
 	ResponseEntity<Product> getById(@PathVariable int productId) {
 		Product product = productInfoService.getById(productId);
 		return ResponseEntity.ok(product);
 	}
 	
-	//http://localhost:8082/productinfo-api/v1/product-info
+	//http://localhost:8082/info-service/v1/product-info
 	@GetMapping("/product-info")
 	ResponseEntity<List<Product>> getAll(){
 		List<Product> products = productInfoService.getAll();
 		return ResponseEntity.ok(products);
 	}
 	
-	//http://localhost:8082/productinfo-api/v1/product-info/brand/Samsung
+	//http://localhost:8082/info-service/v1/product-info/brand/Samsung
 	@GetMapping("/product-info/brand/{brand}")
 	ResponseEntity<List<Product>> getByBrand(@PathVariable String brand){
 		List<Product> products = productInfoService.getByBrand(brand);
 		return ResponseEntity.ok(products);
 	}
 	
-	//http://localhost:8082/productinfo-api/v1/product-info/category/electronics
+	//http://localhost:8082/info-service/v1/product-info/category/electronics
 	@GetMapping("/product-info/category/{category}")
 	ResponseEntity<List<Product>> getByCategory(@PathVariable String category){
 		List<Product> products = productInfoService.getByCategory(category);

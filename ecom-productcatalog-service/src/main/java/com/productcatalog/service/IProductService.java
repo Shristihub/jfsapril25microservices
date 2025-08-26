@@ -20,7 +20,7 @@ public interface IProductService {
 	List<ProductDto> getByCatLessPrice(String category,double price)throws ProductNotFoundException;
 
 	//native query 
-	void updateProductPrice(int productId,double price);
+	void updateProductStock(int productId,int stock);
 }
 
 
