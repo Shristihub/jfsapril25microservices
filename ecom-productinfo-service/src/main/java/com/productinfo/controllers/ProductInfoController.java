@@ -1,5 +1,6 @@
 package com.productinfo.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class ProductInfoController {
 	ResponseEntity<List<Product>> getByCategory(@PathVariable String category){
 		List<Product> products = productInfoService.getByCategory(category);
 		return ResponseEntity.ok(products);
+		
+	
+		
+		
+		
 	}
 	
 }
