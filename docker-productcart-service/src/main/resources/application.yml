@@ -1,0 +1,53 @@
+server:
+  port: 8089
+
+
+spring:
+ application:
+  name: product-cart
+ 
+## provide cloud config uri
+ config:
+  import: configserver:http://config-container:8888
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    circuitbreakers:
+      enabled: true		
+  health:
+    circuitbreakers:
+      enabled: true
+    
+resilience4j:
+  circuitbreaker:
+    instances:
+      cart-cbservice:
+        sliding-window-type: COUNT_BASED
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        register-health-indicator: true
+        record-exceptions:
+         - java.lang.Exception
+  retry:
+    instances:
+      cart-retryservice:
+         # Maximum number of attempts (including the initial call as the first attempt)
+         max-attempts: 3
+         # Fixed wait duration between retry attempts
+         wait-duration: 1s
+         retry-exceptions:
+           - org.springframework.web.client.HttpServerErrorException
+#           - java.lang.Exception
+         ignore-exceptions:
+           - org.springframework.web.client.ResourceAccessException				 

@@ -1,0 +1,93 @@
+services:
+ mysql:
+  image: mysql:8
+  container_name: mysqlcontainer
+  ports:
+   - "3307:3306"
+  environment:
+   MYSQL_ROOT_PASSWORD: root
+   MYSQL_DATABASE: ecomdb
+  networks:
+   - ecom-network
+ 
+ product-catalog:
+  build:
+   context: ../docker-productcatalog-service
+   dockerfile: Dockerfile
+  container_name: catalog-container
+  ports:
+  - "8084:8084"
+  depends_on:
+   - product-inventory
+   - config-server
+   - mysql
+  networks:
+     - ecom-network
+  healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+ product-inventory:
+  build:
+   context: ../docker-productinventory-service
+   dockerfile: Dockerfile
+  container_name: inventory-container
+  ports:
+   - "8087:8087"
+  depends_on:
+   - config-server
+   - mysql
+  networks:
+   - ecom-network
+  healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+ 
+ product-info:
+    build:
+     context: ../docker-productinfo-service
+     dockerfile: Dockerfile
+    container_name: info-container
+    ports:
+     - "8082:8082"	
+    depends_on:
+     - product-catalog
+    networks:
+     - ecom-network
+
+ product-cart:
+    build:
+     context: ../docker-productcart-service
+     dockerfile: Dockerfile
+    container_name: cart-container
+    ports:
+     - "8089:8089"	 
+    depends_on:
+     - product-info
+     - config-server
+     - mysql
+    networks:
+      - ecom-network
+    healthcheck:
+       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+       interval: 10s
+       timeout: 5s
+       retries: 5
+
+ config-server:
+    build:
+     context: ../docker-config-server
+     dockerfile: Dockerfile
+    container_name: config-container
+    ports:
+     - "8888:8888"	
+    networks:
+     - ecom-network
+
+networks:
+   ecom-network:
+    driver: bridge

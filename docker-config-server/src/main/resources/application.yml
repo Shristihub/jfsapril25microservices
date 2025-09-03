@@ -1,0 +1,16 @@
+spring:
+ application:
+    name: ecom-config-server
+# specify the location of the git hub repo
+ cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Shristihub/jfsapr25microrepo.git
+
+server:
+  port: 8888
+
+
+#access the yml file as
+#http://localhost:8888/product-catalog.yml

@@ -1,0 +1,10 @@
+server:
+  port: 8087
+spring:
+ application:
+  name: product-inventory
+  
+# provide cloud config uri
+ config:
+  import: configserver:http://config-container:8888
+
